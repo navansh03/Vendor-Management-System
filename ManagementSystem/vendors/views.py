@@ -5,12 +5,26 @@ from rest_framework.views import APIView
 from .models import Vendor
 from .serializers import VendorSerializer
 from django.shortcuts import get_object_or_404
-
 from rest_framework import viewsets
+from rest_framework.decorators import action
 
 class VendorViewSet(viewsets.ModelViewSet):
     queryset = Vendor.objects.all()
     serializer_class = VendorSerializer
+
+
+    @action(detail=True, methods=['get'])
+    def performance(self, request, pk=None):
+        vendor = self.get_object()
+        data = {
+            'on_time_delivery_rate': vendor.on_time_delivery_rate,
+            'quality_rating_avg': vendor.quality_rating_avg,
+            'average_response_time': vendor.avg_response_time,
+            'fulfillment_rate': vendor.fulfillment_rate,
+        }
+        return Response(data, status=status.HTTP_200_OK)
+    
+    
 
     def create(self, request, *args, **kwargs):
         vendor_code = request.data.get('vendor_code')
