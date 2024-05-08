@@ -8,10 +8,14 @@ from vendors.models import Vendor
 from django.db.models import F, Avg
 from rest_framework.decorators import action
 from django.utils import timezone
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 
 
 class PurchaseOrderViewSet(viewsets.ModelViewSet):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
     queryset = PurchaseOrder.objects.all()
     serializer_class = PurchaseOrderSerializer
 

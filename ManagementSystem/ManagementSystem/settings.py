@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "corsheaders",
     "vendors", 
+    'rest_framework.authtoken',
     "orders", 
 ]
 
@@ -60,6 +61,7 @@ ROOT_URLCONF = 'ManagementSystem.urls'
 REST_FRAMEWORK = {
     "DEFAULT_RENDERER_CLASSES": ("rest_framework.renderers.JSONRenderer",),
     "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.AllowAny",),
+    "DEFAULT_AUTHENTICATION_CLASSES": ("rest_framework.authentication.TokenAuthentication",),
 }
 
 # CORS ORIGIN METHODS need to be changed for the production
