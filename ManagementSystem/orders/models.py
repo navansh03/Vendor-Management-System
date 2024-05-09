@@ -8,8 +8,8 @@ class PurchaseOrder(models.Model):
     po_number = models.CharField(max_length=255, unique=True)
     vendor = models.ForeignKey(Vendor, on_delete=models.CASCADE)    
     order_date = models.DateTimeField(default=timezone.now)
-    delivery_date = models.DateTimeField()  #expected delivery date
-    items = JSONField()   #details of the items ordered
+    delivery_date = models.DateTimeField(null=True,blank=True)  #expected delivery date
+    items = JSONField(null=True)   #details of the items ordered
     quantity = models.IntegerField() 
     #defining the choices
     STATUS_CHOICES = [

@@ -4,7 +4,7 @@ from .models import PurchaseOrder
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework import status
-from vendors.models import Vendor
+from vendors.models import Vendor, VendorPerformance
 from django.db.models import F, Avg
 from rest_framework.decorators import action
 from django.utils import timezone
@@ -78,6 +78,17 @@ class PurchaseOrderViewSet(viewsets.ModelViewSet):
 
             if total_completed_pos > 0:
                 vendor.on_time_delivery_rate = on_time_pos / total_completed_pos
+
+
+            #it will save the instances of the vendor performance which will be used to view the performance trends of the vendor
+            VendorPerformance.objects.create(
+                vendor=vendor,
+                date=timezone.now(),
+                on_time_delivery_rate=vendor.on_time_delivery_rate,
+                quality_rating_avg=vendor.quality_rating_average,
+                average_response_time=vendor.average_response_time,
+                fulfillment_rate=vendor.fulfillment_rate,
+            )
 
         if po.quality_rating is not None:
             quality_rating_average = completed_pos.aggregate(Avg('quality_rating'))['quality_rating__avg']
