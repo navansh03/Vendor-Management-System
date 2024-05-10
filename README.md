@@ -8,6 +8,9 @@ This is a Vendor Management System developed using Django and Django REST Framew
 
    ```bash
    git clone https://github.com/navansh03/Vendor-Management-System.git
+   ```
+   Locating to the Project Directory:
+   ```bash
    cd Vendor-Management-System
    ```
 
@@ -65,7 +68,7 @@ To generate a token, send a POST request to `http://localhost:8000/api/token/` w
 ```bash
 curl -X POST -H "Content-Type: application/json" -d '{"username":"yourusername","password":"yourpassword"}' http://localhost:8000/api/token/
 ```
-###### Please replace yourusername and yourpassword with your actual username and password.
+##### Please replace yourusername and yourpassword with your actual username and password which you have created.
 
 You can then use this token in your API requests by including it in the `Authorization` header, prefixed with `Token `:
 
@@ -73,7 +76,7 @@ You can then use this token in your API requests by including it in the `Authori
 curl -X GET -H "Authorization: Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b" http://localhost:8000/api/vendors/
 ```
 
-
+### API Endpoints
 All API endpoints are documented in Swagger. After running the application, you can access the Swagger UI at `http://localhost:8000/swagger`.
 
 The Swagger UI provides a comprehensive list of all API endpoints, along with descriptions and examples for each one. You can also try out the API directly from the Swagger UI.
@@ -86,6 +89,7 @@ Then, to run the test suite, execute the following command:
 
 python manage.py test
 ```
+This will run all the tests in your Django project and display the results in the terminal
 
 ## Contact
 
