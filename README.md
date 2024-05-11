@@ -76,6 +76,18 @@ You can then use this token in your API requests by including it in the `Authori
 curl -X GET -H "Authorization: Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b" http://localhost:8000/api/vendors/
 ```
 
+### Postman Collection
+
+A Postman collection is included in the project directory to help you interact with the API. This collection contains pre-configured requests for all the API endpoints.
+
+To use the Postman collection:
+
+1. Open Postman.
+2. Click on "File" -> "Import...".
+3. Choose the `Vendor Management System.postman_collection.json` file from the project directory.
+4. After importing, you'll see the collection in the "Collections" tab. You can now use these requests to interact with the API.
+
+
 ### API Endpoints
 All API endpoints are documented in Swagger. After running the application, you can access the Swagger UI at `http://localhost:8000/swagger`.
 
